@@ -17,9 +17,13 @@ album_repository.save(album2)
 # album_repository.delete_all()
 # artist_repository.delete_all()
 
+# results = album_repository.select_one(1)
+# results = artist_repository.select_one(1)
+
+# results = artist_repository.select_all()
+results = album_repository.select_all()
 
 
-# for task in result:
-#     print(task.__dict__)
+print(results.__dict__)
 
-# pdb.set_trace()
+pdb.set_trace()

@@ -3,17 +3,17 @@ from models.album import Album
 from models.artist import Artist
 import repositories.artist_repository as artist_repository
 
-# def select_all():
-#     albums = []
+def select_all():
+    albums = []
 
-#     sql = "SELECT * FROM albums"
-#     albums = run_sql(sql)
+    sql = "SELECT * FROM albums"
+    albums = run_sql(sql)
 
-#     for row in albums:
-#         artist = artist_repository.select(row['artist_id'])
-#         album = Album(row['title'], ['genre'], artist, row['id]'])
-#         albums.append(album)
-#     return albums
+    for row in albums:
+        # artist = artist_repository.select_all(row['id'])
+        album = Album(row['title'], row['genre'], row['artist'], row['id]'])
+        albums.append(album)
+    return albums
 
 def save(album):
     sql = """
@@ -33,13 +33,12 @@ def delete_all():
     run_sql(sql)
 
 def select_one(id):
-    albums = []
-
-    sql = 'SELECT * FROM albums WHERE id = %s'
-    albums = run_sql(sql)
-
-    for row in albums:
-        artist = artist_repository.select(row['artist_id'])
-        album = Album(row['title'], row['genre'], artist, row['id'])
-        albums.append(album)
-    return albums
+    albums = None
+    sql = 'SELECT * FROM albums WHERE id=%s'
+    values = [id]
+    albums = run_sql(sql, values)
+    if albums:
+        result = albums[0]
+        artist = artist_repository.select_one(result['id'])
+        album = Album(result['title'], result['genre'], artist, result['id'])
+    return album
