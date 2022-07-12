@@ -3,17 +3,17 @@ from models.album import Album
 from models.artist import Artist
 import repositories.album_repository as album_repository
 
-def select_all():
-    artists = []
+# def select_all():
+#     artists = []
 
-    sql = "SELECT * FROM artists"
-    artists = run_sql(sql)
+#     sql = "SELECT * FROM artists"
+#     artists = run_sql(sql)
 
-    for row in artists:
-        album = album_repository.select_all(row['id'])
-        artist = Artist(row['name'], album, row['id]'])
-        artists.append(artist)
-    return artists
+#     for row in artists:
+#         album = album_repository.select_all(row['id'])
+#         artist = Artist(row['name'], album, row['id]'])
+#         artists.append(artist)
+#     return artists
 
 
 def save(artist):

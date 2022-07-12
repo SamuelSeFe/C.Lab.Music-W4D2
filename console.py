@@ -21,7 +21,7 @@ album_repository.save(album2)
 # results = artist_repository.select_one(1)
 
 # results = artist_repository.select_all()
-results = album_repository.select_all()
+results = album_repository.select_all_albums()
 
 
 print(results.__dict__)

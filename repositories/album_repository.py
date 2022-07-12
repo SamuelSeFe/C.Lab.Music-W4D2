@@ -3,15 +3,14 @@ from models.album import Album
 from models.artist import Artist
 import repositories.artist_repository as artist_repository
 
-def select_all():
+def select_all_albums():
     albums = []
 
     sql = "SELECT * FROM albums"
     albums = run_sql(sql)
 
     for row in albums:
-        # artist = artist_repository.select_all(row['id'])
-        album = Album(row['title'], row['genre'], row['artist'], row['id]'])
+        album = Album(row['title'], row['genre'], row['artist'], row['id'])
         albums.append(album)
     return albums
 
